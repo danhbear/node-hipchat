@@ -10,5 +10,7 @@
   },
   "engines": { "node": "*" },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "chainer": ">=0.0"
+  }
 }

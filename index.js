@@ -38,7 +38,7 @@ Rooms.prototype.message = function(room, name, msg) {
 
 // Get detailed room info.
 Rooms.prototype.show = function(room, cb) {
-  var data = typeof room !== 'object' ? { room: room } : room;
+  var data = typeof room !== 'object' ? { room_id: room } : room;
   this.request('GET', '/v1/rooms/show', data, cb);
 };
 

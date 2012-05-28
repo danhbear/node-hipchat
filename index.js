@@ -91,7 +91,7 @@ Users.prototype.list = function(cb) {
 // Show detailed user info.
 Users.prototype.show = function(id, cb) {
   var data = typeof id !== 'object' ? { user_id: id } : id;
-  this.request('POST', '/v1/users/show', data, cb);
+  this.request('GET', '/v1/users/show', data, cb);
 };
 
 // Update a user.

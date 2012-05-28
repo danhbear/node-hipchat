@@ -42,6 +42,30 @@ Rooms.prototype.show = function(room, cb) {
   this.request('GET', '/v1/rooms/show', data, cb);
 };
 
+// Add permissions.
+Rooms.prototype.addPermissions = function(room, newParticipants) {
+  var last = arguments[arguments.length-1];
+  var cb = (typeof last === 'function') ? last : function(){};
+
+  var data = typeof room !== 'object'
+    ? { room_id: room, member_user_ids: newParticipants.join(',') }
+    : room;
+  
+  this.request('POST', '/v1/rooms/add_permissions', data, cb)
+};
+
+// Remove permissions.
+Rooms.prototype.removePermissions = function(room, oldParticipants) {
+  var last = arguments[arguments.length-1];
+  var cb = (typeof last === 'function') ? last : function(){};
+
+  var data = typeof room !== 'object'
+    ? { room_id: room, member_user_ids: oldParticipants.join(',') }
+    : room;
+  
+  this.request('POST', '/v1/rooms/remove_permissions', data, cb)
+};
+
 /***************
  *             *
  *    Users    *
